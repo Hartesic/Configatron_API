@@ -1,10 +1,6 @@
 from rest_framework import viewsets
-from parts.models import Usage, CPU, Mobo, GPU, Memory, SSD, HDD, CPUCooling, SoundCard, OpticalDrive, PSU, Case
-from parts.serializers import UsageSerializer, CPUSerializer, MoboSerializer, GPUSerializer, MemorySerializer, SSDSerializer, HDDSerializer, CPUCoolingSerializer, SoundCardSerializer, OpticalDriveSerializer, PSUSerializer, CaseSerializer
-
-class UsageViewSet(viewsets.ModelViewSet):
-    queryset = Usage.objects.all()
-    serializer_class = UsageSerializer
+from parts.models import CPU, Mobo, GPU, Memory, SSD, HDD, CPUCooling, SoundCard, OpticalDrive, PSU, Case
+from parts.serializers import CPUSerializer, MoboSerializer, GPUSerializer, MemorySerializer, SSDSerializer, HDDSerializer, CPUCoolingSerializer, SoundCardSerializer, OpticalDriveSerializer, PSUSerializer, CaseSerializer
 
 class CPUViewSet(viewsets.ModelViewSet):
     queryset = CPU.objects.all()

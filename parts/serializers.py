@@ -1,17 +1,11 @@
 from rest_framework import serializers
-from parts.models import Usage, CPU, Mobo, GPU, Memory, SSD, HDD, CPUCooling, SoundCard, OpticalDrive, PSU, Case
-
-class UsageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Usage
-        fields = ['name']
+from parts.models import CPU, Mobo, GPU, Memory, SSD, HDD, CPUCooling, SoundCard, OpticalDrive, PSU, Case
 
 
-
-base_fields = ['usage', 'brand', 'name']
+base_fields = ['category', 'brand', 'name']
 
 class BasePartSerializer(serializers.ModelSerializer):
-    usage = serializers.SlugRelatedField(many=False, read_only=False, slug_field="name")
+    category = serializers.SlugRelatedField(many=False, read_only=False, slug_field="name")
 
 
 

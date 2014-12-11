@@ -2,6 +2,7 @@ from rest_framework import serializers
 from configs.models import Config
 
 class ConfigSerializer(serializers.ModelSerializer):
+    category = serializers.SlugRelatedField(many=False, read_only=False, slug_field="name")
     cpu = serializers.PrimaryKeyRelatedField()
     mobo = serializers.PrimaryKeyRelatedField()
     gpu = serializers.PrimaryKeyRelatedField()
@@ -15,4 +16,4 @@ class ConfigSerializer(serializers.ModelSerializer):
     case = serializers.PrimaryKeyRelatedField()
     class Meta:
         model = Config
-        fields = ['title', 'description', 'created', 'cpu', 'mobo', 'gpu', 'memory', 'ssd', 'hdd', 'cpu_cooling', 'sound_card', 'optical_drive', 'psu', 'case']
+        fields = ['title', 'category', 'description', 'created', 'cpu', 'mobo', 'gpu', 'memory', 'ssd', 'hdd', 'cpu_cooling', 'sound_card', 'optical_drive', 'psu', 'case']

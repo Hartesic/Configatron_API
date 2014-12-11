@@ -1,8 +1,10 @@
 from django.db import models
+from categories.models import Category
 from parts.models import CPU, Mobo, GPU, Memory, SSD, HDD, CPUCooling, SoundCard, OpticalDrive, PSU, Case
 
 class Config(models.Model):
 	title = models.CharField(max_length=50)
+	category = models.ForeignKey(Category)
 	description = models.TextField()
 	created = models.DateTimeField(auto_now=True)
 	cpu = models.ForeignKey(CPU)

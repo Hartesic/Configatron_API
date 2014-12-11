@@ -1,12 +1,8 @@
 from django.db import models
-
-class Usage(models.Model):
-	name = models.CharField(max_length=20)
-	def __unicode__(self):
-		return self.name
+from categories.models import Category
 
 class CPU(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='cpu')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=20)
 	socket = models.CharField(max_length=10)
@@ -15,7 +11,7 @@ class CPU(models.Model):
 		return self.brand + ' - ' + self.name
 
 class Mobo(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='mobo')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=30)
 	socket = models.CharField(max_length=10)
@@ -24,7 +20,7 @@ class Mobo(models.Model):
 		return self.brand + ' - ' + self.name
 
 class GPU(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='gpu')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=20)
 	chipset = models.CharField(max_length=30)
@@ -33,7 +29,7 @@ class GPU(models.Model):
 		return self.brand + ' - ' + self.name
 
 class Memory(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='memory')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=20)
 	count = models.PositiveSmallIntegerField(default=0)
@@ -44,7 +40,7 @@ class Memory(models.Model):
 		return self.brand + ' - ' + self.name
 
 class SSD(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='ssd')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=30)
 	memory = models.PositiveSmallIntegerField(default=0)
@@ -54,7 +50,7 @@ class SSD(models.Model):
 		return self.brand + ' - ' + self.name
 
 class HDD(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='hdd')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=30)
 	memory = models.PositiveSmallIntegerField(default=0)
@@ -64,7 +60,7 @@ class HDD(models.Model):
 		return self.brand + ' - ' + self.name
 
 class CPUCooling(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='cpu_cooling')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=30)
 	socket = models.CharField(max_length=10)
@@ -73,7 +69,7 @@ class CPUCooling(models.Model):
 		return self.brand + ' - ' + self.name
 
 class SoundCard(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='sound_card')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=30)
 	interface = models.CharField(max_length=20)
@@ -82,7 +78,7 @@ class SoundCard(models.Model):
 		return self.brand + ' - ' + self.name
 
 class OpticalDrive(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='optical_drive')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=30)
 	disk_type = models.CharField(max_length=10)
@@ -91,7 +87,7 @@ class OpticalDrive(models.Model):
 		return self.brand + ' - ' + self.name
 
 class PSU(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='psu')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=30)
 	power = models.PositiveSmallIntegerField(default=0)
@@ -101,7 +97,7 @@ class PSU(models.Model):
 		return self.brand + ' - ' + self.name
 
 class Case(models.Model):
-	usage = models.ForeignKey(Usage)
+	category = models.ForeignKey(Category, related_name='case')
 	brand = models.CharField(max_length=20)
 	name = models.CharField(max_length=30)
 	size = models.CharField(max_length=10)
